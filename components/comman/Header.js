@@ -26,35 +26,41 @@ const Header = () => {
   };
   const closeMenu = () => setVisible(false);
   return (
-    <View>
-      <Appbar.Header>
-        <Appbar.Content title="Make Trip" />
-        <Menu visible={visible} onDismiss={closeMenu} anchor={myButton}>
-          <Menu.Item
-            onPress={() => {
-              console.log('Option 1 was pressed');
-              closeMenu();
-            }}
-            title="Option 1"
-          />
-          <Menu.Item
-            onPress={() => {
-              console.log('Option 2 was pressed');
-              closeMenu();
-            }}
-            title="Option 2"
-          />
-          <Menu.Item
-            onPress={() => {
-              console.log('Option 3 was pressed');
-              closeMenu();
-            }}
-            title="Option 3"
-            disabled
-          />
-        </Menu>
-      </Appbar.Header>
-    </View>
+    <Provider>
+      <View style={styles.menuWrapper}>
+        <Appbar.Header>
+          <Appbar.Content title="Make Trip" />
+          <Menu
+            visible={visible}
+            onDismiss={closeMenu}
+            anchor={myButton}
+            style={styles.menuWrapper}>
+            <Menu.Item
+              onPress={() => {
+                console.log('Option 1 was pressed');
+                closeMenu();
+              }}
+              title="Option 1"
+            />
+            <Menu.Item
+              onPress={() => {
+                console.log('Option 2 was pressed');
+                closeMenu();
+              }}
+              title="Option 2"
+            />
+            <Menu.Item
+              onPress={() => {
+                console.log('Option 3 was pressed');
+                closeMenu();
+              }}
+              title="Option 3"
+              disabled
+            />
+          </Menu>
+        </Appbar.Header>
+      </View>
+    </Provider>
   );
 };
 
@@ -62,6 +68,10 @@ const styles = StyleSheet.create({
   imageWrapper: {
     marginRight: 20,
     flexDirection: 'row',
+  },
+  menuWrapper: {
+    zIndex: 999,
+    elevation: 999,
   },
 });
 export default Header;

@@ -1,15 +1,20 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Header from '../components/comman/Header';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeSection = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.mainWrapper}>
       <View>
         <Header />
       </View>
       <View style={styles.transportSection}>
-        <TouchableOpacity style={styles.imageWrapper}>
+        <TouchableOpacity
+          style={styles.imageWrapper}
+          onPress={() => navigation.navigate('FlightBooking')}>
           <Image
             source={{
               uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
@@ -18,7 +23,9 @@ const HomeSection = () => {
           />
           <Text>Flights</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.imageWrapper}>
+        <TouchableOpacity
+          style={styles.imageWrapper}
+          onPress={() => navigation.navigate('TrainsBooking')}>
           <Image
             source={{
               uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
@@ -27,7 +34,9 @@ const HomeSection = () => {
           />
           <Text>Trains</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.imageWrapper}>
+        <TouchableOpacity
+          style={styles.imageWrapper}
+          onPress={() => navigation.navigate('BusBooking')}>
           <Image
             source={{
               uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
@@ -36,7 +45,9 @@ const HomeSection = () => {
           />
           <Text>Bus</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.imageWrapper}>
+        <TouchableOpacity
+          style={styles.imageWrapper}
+          onPress={() => navigation.navigate('HotelBooking')}>
           <Image
             source={{
               uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
@@ -262,7 +273,7 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 40,
+    marginTop: 70,
     borderWidth: 1,
     borderColor: 'thistle',
     borderRadius: 10,
