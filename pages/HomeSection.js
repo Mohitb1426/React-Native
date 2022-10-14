@@ -44,21 +44,11 @@ const HomeSection = () => {
       <View style={styles.secondTransportSection}>
         <View style={styles.transportSection_second}>
           <TouchableOpacity style={styles.imageWrapper}>
-            <Image
-              source={{
-                uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
-              }}
-              style={{ width: 25, height: 25 }}
-            />
+            <Image source={busImage} style={{ width: 55, height: 30 }} />
             <Text style={styles.wrapText}>Airport Cabs</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.imageWrapper}>
-            <Image
-              source={{
-                uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
-              }}
-              style={{ width: 25, height: 25 }}
-            />
+            <Image source={hotelImage} style={{ width: 55, height: 30 }} />
             <Text style={styles.wrapText}>Homestays</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.imageWrapper}>
@@ -100,12 +90,7 @@ const HomeSection = () => {
             <Text style={styles.wrapText}>Gift Cards</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.imageWrapper}>
-            <Image
-              source={{
-                uri: 'https://reactnativecode.com/wp-content/uploads/2018/04/hamburger_icon.png',
-              }}
-              style={{ width: 25, height: 25 }}
-            />
+            <Image source={trainsImage} style={{ width: 25, height: 25 }} />
             <Text style={styles.wrapText}>Train PNR Status</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.imageWrapper}>

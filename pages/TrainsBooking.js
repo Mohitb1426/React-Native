@@ -29,6 +29,9 @@ const Item = ({ title, id }) => (
       </View>
       <View style={styles.contentStyle}>
         <Text style={styles.contentTitleText}> {title}</Text>
+        <Text style={styles.contentTimingText}>
+          Timing : {id} AM - {id + 1} PM
+        </Text>
       </View>
     </TouchableOpacity>
   </View>
@@ -59,6 +62,7 @@ const TrainsBooking = () => {
           <Text style={styles.backText}> Back</Text>
         </TouchableOpacity>
       </View>
+      <Text style={styles.MainHeaderStyle}>Trains</Text>
       <SafeAreaView style={styles.container}>
         <FlatList
           data={flightData}
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
     color: 'green',
   },
   contentStyle: {
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
   contentView: {
     alignContent: 'center',
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
     borderColor: 'green',
     borderBottomColor: 'green',
     borderRadius: 10,
-    height: 100,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 10,
@@ -113,6 +117,16 @@ const styles = StyleSheet.create({
   contentTitleText: {
     flexShrink: 1,
     color: 'green',
+  },
+  contentTimingText: {
+    fontSize: 15,
+    color: 'red',
+  },
+  MainHeaderStyle: {
+    fontSize: 20,
+    color: 'green',
+    marginTop: 20,
+    textAlign: 'center',
   },
 });
 export default TrainsBooking;
