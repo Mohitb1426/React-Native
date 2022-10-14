@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
   },
   menuWrapper: {
     zIndex: 999,
-    elevation: 999,
   },
 });
 export default Header;

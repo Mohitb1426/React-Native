@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import backArrow from '../assests/images/kindpng_193306.png';
+import flightImage from '../assests/images/Flight.png';
 import { useNavigation } from '@react-navigation/native';
 import { getPeople, loadUsers } from '../action/FlightList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,9 +18,18 @@ import { GET_FLIGHT_LIST } from '../constant/index';
 
 const Item = ({ title, id }) => (
   <View style={styles.contentView}>
-    <TouchableOpacity style={styles.contentStyle}>
-      <Text style={styles.contentIDText}>Id : {id}</Text>
-      <Text style={styles.contentTitleText}> {title}</Text>
+    <TouchableOpacity>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <Image source={flightImage} style={{ width: 150, height: 50 }} />
+        <Text style={styles.contentIDText}>Price : {id}</Text>
+      </View>
+      <View style={styles.contentStyle}>
+        <Text style={styles.contentTitleText}> {title}</Text>
+      </View>
     </TouchableOpacity>
   </View>
 );
@@ -76,16 +86,22 @@ const styles = StyleSheet.create({
   },
   backText: {
     marginLeft: 10,
+    color: 'green',
   },
   contentStyle: {
     flexDirection: 'row',
   },
   contentView: {
-    borderWidth: 1,
-    borderBottomColor: 'black',
-    borderRadius: 0,
-    height: 50,
+    alignContent: 'center',
+    borderWidth: 2,
+    borderColor: 'green',
+    borderBottomColor: 'green',
+    borderRadius: 10,
+    height: 100,
     justifyContent: 'center',
+    alignItems: 'flex-start',
+    padding: 10,
+    marginTop: 20,
   },
   mainWrapper: {
     paddingHorizontal: 10,
@@ -93,10 +109,10 @@ const styles = StyleSheet.create({
   contentIDText: {
     color: 'green',
     marginLeft: 10,
+    fontSize: 19,
   },
   contentTitleText: {
     flexShrink: 1,
-    marginLeft: 20,
     color: 'green',
   },
 });

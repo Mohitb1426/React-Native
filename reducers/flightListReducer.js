@@ -18,24 +18,4 @@ const flightListReducer = (state = initialState, action) => {
   }
 };
 
-export const fetchData = bool => {
-  return {
-    type: GET_PEOPLE,
-    payload: bool,
-  };
-};
-export const fetchDataFulfilled = data => {
-  return {
-    type: GET_PEOPLE_FULFILLED,
-    payload: data,
-    loading: false,
-  };
-};
-export const fetchDataRejected = error => {
-  return {
-    type: GET_PEOPLE_REJECTED,
-    payload: error,
-    loading: false,
-  };
-};
 export default flightListReducer;
