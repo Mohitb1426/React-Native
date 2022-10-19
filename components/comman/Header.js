@@ -2,8 +2,11 @@ import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Appbar, Menu, Provider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import app from '../../database/firebase';
+import { useNavigation } from '@react-navigation/native';
 
 const Header = () => {
+  const navigation = useNavigation();
   const myButton = (
     <TouchableOpacity
       style={styles.imageWrapper}
@@ -24,6 +27,16 @@ const Header = () => {
     setVisible(true);
     console.log(visible, '********visible');
   };
+
+  const onLogout = async () => {
+    try {
+      await app.auth().signOut();
+      navigation.navigate('Login');
+    } catch (error) {
+      closeMenu();
+      alert(error);
+    }
+  };
   const closeMenu = () => setVisible(false);
   return (
     <Provider>
@@ -35,28 +48,7 @@ const Header = () => {
             onDismiss={closeMenu}
             anchor={myButton}
             style={styles.menuWrapper}>
-            <Menu.Item
-              onPress={() => {
-                console.log('Option 1 was pressed');
-                closeMenu();
-              }}
-              title="Option 1"
-            />
-            <Menu.Item
-              onPress={() => {
-                console.log('Option 2 was pressed');
-                closeMenu();
-              }}
-              title="Option 2"
-            />
-            <Menu.Item
-              onPress={() => {
-                console.log('Option 3 was pressed');
-                closeMenu();
-              }}
-              title="Option 3"
-              disabled
-            />
+            <Menu.Item onPress={onLogout} title="Logout" />
           </Menu>
         </Appbar.Header>
       </View>

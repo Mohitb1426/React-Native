@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   SafeAreaView,
@@ -15,6 +16,8 @@ import { useNavigation } from '@react-navigation/native';
 import { getPeople, loadUsers } from '../action/FlightList';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_FLIGHT_LIST } from '../constant/index';
+import { getData, storeData } from '../asyncStorage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Item = ({ title, id }) => (
   <View style={styles.contentView}>
@@ -42,14 +45,27 @@ const FlightBooking = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [flightData, setFlightData] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     dispatch(getPeople());
-  }, [dispatch]);
+    setTimeout(() => {
+      setLoader(false);
+    }, 2000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getParseData = useCallback(async () => {
+    const setData = await storeData('FLIGHT_DATA', JSON.stringify(dataOutput));
+    const allFlightData = await getData('FLIGHT_DATA');
+    console.log(allFlightData, 'allFlightData');
+    setFlightData(allFlightData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    console.log(dataOutput, 'dataOutput');
-    setFlightData(dataOutput);
+    getParseData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataOutput]);
   const renderItem = ({ item }) => <Item title={item?.title} id={item?.id} />;
 
@@ -64,13 +80,24 @@ const FlightBooking = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.MainHeaderStyle}>Flights</Text>
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={flightData}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-        />
-      </SafeAreaView>
+      {loader ? (
+        <View style={styles.container}>
+          <ActivityIndicator
+            animating={loader}
+            color="#bc2b78"
+            size="large"
+            style={styles.activityIndicator}
+          />
+        </View>
+      ) : (
+        <SafeAreaView>
+          <FlatList
+            data={flightData}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        </SafeAreaView>
+      )}
     </View>
   );
 };
@@ -128,6 +155,18 @@ const styles = StyleSheet.create({
     color: 'green',
     marginTop: 20,
     textAlign: 'center',
+  },
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+    marginTop: 250,
+  },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 80,
   },
 });
 export default FlightBooking;
