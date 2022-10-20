@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import {
   ActivityIndicator,
   Button,
-  Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import app from '../database/firebase';
 import { useNavigation } from '@react-navigation/native';
-import backArrow from '../assests/images/kindpng_193306.png';
 
-const Login = ({ showLoginPage, setShowLoginPage }) => {
+const Login = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);

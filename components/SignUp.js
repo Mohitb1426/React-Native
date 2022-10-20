@@ -8,11 +8,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Modal from 'react-native-modal';
 import app from '../database/firebase';
 import { useNavigation } from '@react-navigation/native';
 
-const SignUp = ({ showLoginPage, setShowLoginPage }) => {
+const SignUp = () => {
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

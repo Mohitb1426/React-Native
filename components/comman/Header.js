@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Appbar, Menu, Provider } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import app from '../../database/firebase';
 import { useNavigation } from '@react-navigation/native';
 

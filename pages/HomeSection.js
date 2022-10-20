@@ -6,11 +6,9 @@ import busImage from '../assests/images/Bus.png';
 import flightImage from '../assests/images/Flight.png';
 import hotelImage from '../assests/images/Hotel.png';
 import trainsImage from '../assests/images/Train.png';
-import SignUp from '../components/SignUp';
 
 const HomeSection = () => {
   const navigation = useNavigation();
-  const [showLoginPage, setShowLoginPage] = useState(true);
 
   return (
     <View>
@@ -232,12 +230,6 @@ const HomeSection = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
-      <View>
-        <SignUp
-          showLoginPage={showLoginPage}
-          setShowLoginPage={setShowLoginPage}
-        />
       </View>
     </View>
   );

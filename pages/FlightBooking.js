@@ -15,20 +15,18 @@ import flightImage from '../assests/images/Flight.png';
 import { useNavigation } from '@react-navigation/native';
 import { getPeople, loadUsers } from '../action/FlightList';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_FLIGHT_LIST } from '../constant/index';
 import { getData, storeData } from '../asyncStorage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Item = ({ title, id }) => (
+const Item = ({ title, id, navigation }) => (
   <View style={styles.contentView}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('FlightPricing')}>
       <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
         }}>
         <Image source={flightImage} style={{ width: 150, height: 50 }} />
-        <Text style={styles.contentIDText}>Price : {id}</Text>
+        <Text style={styles.contentIDText}>Price : {id + 1000}</Text>
       </View>
       <View style={styles.contentStyle}>
         <Text style={styles.contentTitleText}> {title}</Text>
@@ -67,7 +65,9 @@ const FlightBooking = () => {
     getParseData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataOutput]);
-  const renderItem = ({ item }) => <Item title={item?.title} id={item?.id} />;
+  const renderItem = ({ item }) => (
+    <Item title={item?.title} id={item?.id} navigation={navigation} />
+  );
 
   return (
     <View style={styles.mainWrapper}>

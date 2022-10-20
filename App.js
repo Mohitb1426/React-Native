@@ -8,6 +8,7 @@ import TrainsBooking from './pages/TrainsBooking';
 import BusBooking from './pages/BusBooking';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import FlightPricing from './components/flight/FlightPricing';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -47,6 +48,11 @@ const App = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FlightPricing"
+          component={FlightPricing}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
