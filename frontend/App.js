@@ -9,6 +9,7 @@ import BusBooking from './pages/BusBooking';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import FlightPricing from './components/flight/FlightPricing';
+import UserList from './components/user/UserList';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -53,6 +54,11 @@ const App = () => {
         <Stack.Screen
           name="FlightPricing"
           component={FlightPricing}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="UserList"
+          component={UserList}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

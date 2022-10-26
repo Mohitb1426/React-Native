@@ -44,9 +44,11 @@ const HomeSection = () => {
         </View>
         <View style={styles.secondTransportSection}>
           <View style={styles.transportSection_second}>
-            <TouchableOpacity style={styles.imageWrapper}>
+            <TouchableOpacity
+              style={styles.imageWrapper}
+              onPress={() => navigation.navigate('UserList')}>
               <Image source={busImage} style={{ width: 55, height: 30 }} />
-              <Text style={styles.wrapText}>Airport Cabs</Text>
+              <Text style={styles.wrapText}>User List</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.imageWrapper}>
               <Image source={hotelImage} style={{ width: 55, height: 30 }} />
